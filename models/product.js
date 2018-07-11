@@ -1,39 +1,39 @@
 module.exports = function(sequelize, DataTypes) {
-    var Post = sequelize.define("Post", {
-      productName: {
+    var Product = sequelize.define("product", {
+      name: {
         type: DataTypes.TEXT,
-        allowNull: false,
-        validate: {
-          len: [1]
-        }
+        // allowNull: false,
+        // validate: {
+        //   len: [1]
+        // }
       },
-      productDescription: {
+      description: {
         type: DataTypes.TEXT,
-        allowNull: false,
-        len: [1]
+        // allowNull: false,
+        // len: [1]
       },
-      productPrice: {
+      price: {
         type: DataTypes.INTEGER,
-        allowNull: false,
-        len: [1]
+        // allowNull: false,
+        // len: [1]
       },
-      productImg: {
+      img: {
         type: DataTypes.TEXT,
-        allowNull: false,
-        len: [1]
+        // allowNull: false,
+        // len: [1]
       }
     },
   );
   
-    Post.associate = function(models) {
-      // We're saying that a Post should belong to an Seller
-      // A Post can't be created without an Seller due to the foreign key constraint
-      Post.belongsTo(models.Seller, {
-        foreignKey: {
-          allowNull: false
-        }
-      });
-    };
+    // Post.associate = function(models) {
+    //   // We're saying that a Post should belong to an Seller
+    //   // A Post can't be created without an Seller due to the foreign key constraint
+    //   Post.belongsTo(models.Seller, {
+    //     foreignKey: {
+    //       allowNull: false
+    //     }
+    //   });
+    // };
   
-    return Post;
+    return Product;
   };

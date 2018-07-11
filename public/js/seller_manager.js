@@ -50,7 +50,10 @@ $(document).ready(function() {
     function editProduct() {
       var currentProduct = $(this).data("product");
       $(this).children().hide();
-      $(this).children("input.edit").val(currentProduct.text);
+      $(this).children("input.edit").val(currentProduct.name);
+      $(this).children("input.edit").val(currentProduct.description);
+      $(this).children("input.edit").val(currentProduct.price);
+      $(this).children("input.edit").val(currentProduct.img);
       $(this).children("input.edit").show();
       $(this).children("input.edit").focus();
     }
@@ -68,7 +71,10 @@ $(document).ready(function() {
     function finishEdit(event) {
       var updatedProduct = $(this).data("product");
       if (event.which === 13) {
-        updatedProduct.text = $(this).children("input").val().trim();
+        updatedProduct.name = $(this).children("input").val().trim();
+        updatedProduct.description = $(this).children("input").val().trim();
+        updatedProduct.price = $(this).children("input").val().trim();
+        updatedProduct.img = $(this).children("input").val().trim();
         $(this).blur();
         updateProduct(updatedProduct);
       }
@@ -89,7 +95,10 @@ $(document).ready(function() {
       var currentProduct = $(this).data("product");
       if (currentProduct) {
         $(this).children().hide();
-        $(this).children("input.edit").val(currentProduct.text);
+        $(this).children("input.edit").val(currentProduct.name);
+        $(this).children("input.edit").val(currentProduct.description);
+        $(this).children("input.edit").val(currentProduct.price);
+        $(this).children("input.edit").val(currentProduct.img);
         $(this).children("span").show();
         $(this).children("button").show();
       }
@@ -101,7 +110,10 @@ $(document).ready(function() {
         [
           "<li class='list-group-item product-item'>",
           "<span>",
-          product.text,
+          product.name,
+          product.description,
+          product.price,
+          product.img,
           "</span>",
           "<input type='text' class='edit' style='display: none;'>",
           "<button class='delete btn btn-danger'>x</button>",
@@ -109,6 +121,7 @@ $(document).ready(function() {
           "</li>"
         ].join("")
       );
+      
   
       $newInputRow.find("button.delete").data("id", product.id);
       $newInputRow.find("input.edit").css("display", "none");

@@ -29,7 +29,7 @@ app.use(express.static("public"));
 // =============================================================
 require("./routes/html-routes.js")(app);
 //require("./routes/seller-api-routes.js")(app);
-// require("./routes/product-api-routes.js")(app);
+require("./routes/product-api-routes.js")(app);
 
 // Syncing our sequelize models and then starting our Express app
 // =============================================================
