@@ -14,10 +14,22 @@ module.exports = function(app) {
 
   // shows our index page
   app.get("/", function(req, res) {
+
+    res.sendFile(path.join(__dirname, "../public/product.html"));
+  });
+
+  // cms route loads cps.html
+  app.get("/cps", function(req, res) {
+    res.sendFile(path.join(__dirname, "../public/cps.html"));
+  });
+
+  // blog route loads produuct.html
+
     res.sendFile(path.join(__dirname, "../public/cps.html"));
   });
 
   // index page route to the products 
+
   app.get("/product", function(req, res) {
     res.sendFile(path.join(__dirname, "../public/product.html"));
   });
