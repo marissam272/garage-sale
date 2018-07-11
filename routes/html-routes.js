@@ -12,24 +12,21 @@ module.exports = function(app) {
 
   // Each of the below routes just handles the HTML page that the user gets sent to.
 
-  // index route loads view.html
+  // shows our index page
   app.get("/", function(req, res) {
-    res.sendFile(path.join(__dirname, "../public/product.html"));
-  });
-
-  // cms route loads cms.html
-  app.get("/cps", function(req, res) {
     res.sendFile(path.join(__dirname, "../public/cps.html"));
   });
 
-  // blog route loads blog.html
+  // index page route to the products 
   app.get("/product", function(req, res) {
     res.sendFile(path.join(__dirname, "../public/product.html"));
   });
 
-//   // authors route loads author-manager.html
-//   app.get("/authors", function(req, res) {
-//     res.sendFile(path.join(__dirname, "../public/author-manager.html"));
-//   });
+  // index page route to seller.html
+  app.get("/seller-manager", function(req, res) {
+    res.sendFile(path.join(__dirname, "../public/seller-manager.html"));
+  });
+
+
 
  };
