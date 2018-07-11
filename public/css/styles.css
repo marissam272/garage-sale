@@ -1,0 +1,9 @@
+body {
+    background-image: url("light-veneer.png");
+}
+
+.jumbotron {
+    background-image: url("mekong-green.png");
+    text-align: center;
+    font-family: 'Shrikhand', cursive;
+}
