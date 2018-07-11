@@ -15,19 +15,19 @@ module.exports = function(app) {
   // shows our index page
   app.get("/", function(req, res) {
 
-    res.sendFile(path.join(__dirname, "../public/cps.html"));
+    res.sendFile(path.join(__dirname, "../public/index.html"));
   });
 
   
   // index page route to the products 
 
-  app.get("/product", function(req, res) {
-    res.sendFile(path.join(__dirname, "../public/product.html"));
+  app.get("/view_products", function(req, res) {
+    res.sendFile(path.join(__dirname, "../public/view_products.html"));
   });
 
   // index page route to seller.html
-  app.get("/seller-manager", function(req, res) {
-    res.sendFile(path.join(__dirname, "../public/seller-manager.html"));
+  app.get("/seller_manager", function(req, res) {
+    res.sendFile(path.join(__dirname, "../public/seller_manager.html"));
   });
 
 

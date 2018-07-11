@@ -15,7 +15,7 @@ module.exports = function(app) {
   // GET route for getting all of the posts
   app.get("/api/products", function(req, res) {
     // findAll returns all entries for a table when used with no options
-    db.Post.findAll({}).then(function(dbProduct) {
+    db.product.findAll({}).then(function(dbProduct) {
       // We have access to the todos as an argument inside of the callback function
       res.json(dbProduct);
     });
@@ -26,7 +26,7 @@ module.exports = function(app) {
     // Here we add an "include" property to our options in our findOne query
     // We set the value to an array of the models we want to include in a left outer join
     // In this case, just db.Author
-    db.Post.findOne({
+    db.product.findOne({
       where: {
         id: req.params.id
       },
@@ -38,14 +38,14 @@ module.exports = function(app) {
 
   // POST route for saving a new post
   app.post("/api/products", function(req, res) {
-    db.Post.create(req.body).then(function(dbProduct) {
+    db.product.create(req.body).then(function(dbProduct) {
       res.json(dbProduct);
     });
   });
 
   // DELETE route for deleting posts
   app.delete("/api/products/:id", function(req, res) {
-    db.Post.destroy({
+    db.product.destroy({
       where: {
         id: req.params.id
       }
@@ -56,7 +56,7 @@ module.exports = function(app) {
 
   // PUT route for updating posts
   app.put("/api/products", function(req, res) {
-    db.Post.update(
+    db.product.update(
       req.body,
       {
         where: {
