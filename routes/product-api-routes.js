@@ -34,7 +34,27 @@ module.exports = function(app) {
     }).then(function(dbProduct) {
       res.json(dbProduct);
     });
+
+    app.put("/api/products/:id", function(req, res) {
+      // Update takes in two arguments, an object describing the properties we want to update,
+      // and another "where" object describing the todos we want to update
+      db.product.update({
+        checkout: true
+      },{
+        where: {
+          id: req.params.id
+        }
+      })
+        .then(function(ans) {
+          console.log('we hit .then update!!!!', ans)
+          res.json(ans);
+        });
+  
+    });
   });
+
+
+  
 
   // POST route for saving a new post
   app.post("/api/products", function(req, res) {
