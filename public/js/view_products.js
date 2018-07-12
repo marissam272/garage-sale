@@ -6,6 +6,7 @@ $(document).ready(function() {
   // Click events for the edit and delete buttons
   $(document).on("click", "button.delete", handleProductDelete);
   $(document).on("click", "button.edit", handleProductEdit);
+  $(document).on("click","button.buy",handleProductPurchase);
   //postCategorySelect.on("change", handleCategoryChange);
   var products;
 
@@ -53,16 +54,22 @@ $(document).ready(function() {
 
   // This function constructs a post's HTML
   function createNewRow(product) {
-    var newProductCard = $("<div>");
+    var newProductCard = $("<div class='container'>");
     newProductCard.addClass("card");
     var newProductCardHeading = $("<div>");
     newProductCardHeading.addClass("card-header");
+
     var deleteBtn = $("<button>");
     deleteBtn.text("x");
     deleteBtn.addClass("delete btn btn-danger");
+
     var editBtn = $("<button>");
     editBtn.text("EDIT");
-    editBtn.addClass("edit btn btn-default");
+    editBtn.addClass("edit btn btn-primary");
+
+    var buyBtn = $("<button>");
+    buyBtn.text("INTERESTED ? BUY IT");
+    buyBtn.addClass("buy btn btn-success");
     var newProductName = $("<h2>");
     //var newPostDate = $("<small>");
     //var newPostCategory = $("<h5>");
@@ -77,17 +84,26 @@ $(document).ready(function() {
     newProductCardBody.addClass("card-body");
 
     var newProductBody = $("<p>");
+    var newProductPrice = $("<p>");
+    var newProductImg = $("<p>");
+
     newProductName.text(product.name + " ");
     newProductBody.text(product.description);
+    newProductPrice.text(product.price);
+    newProductImg.text(product.img);
     //var formattedDate = new Date(post.createdAt);
     //formattedDate = moment(formattedDate).format("MMMM Do YYYY, h:mm:ss a");
     //newPostDate.text(formattedDate);
     //newPostTitle.append(newPostDate);
+    newProductCardHeading.append(newProductName);
     newProductCardHeading.append(deleteBtn);
     newProductCardHeading.append(editBtn);
-    newProductCardHeading.append(newProductName);
+    newProductCardHeading.append(buyBtn);
+    
     //newProductCardHeading.append(newPostCategory);
     newProductCardBody.append(newProductBody);
+    newProductCardBody.append(newProductPrice);
+    newProductCardBody.append(newProductImg);
     newProductCard.append(newProductCardHeading);
     newProductCard.append(newProductCardBody);
     newProductCard.data("product", product);
@@ -114,12 +130,23 @@ $(document).ready(function() {
     window.location.href = "/seller_manager?product_id=" + currentProduct.id;
   }
 
+  //fuunction to handle buy functionality
+  function handleProductPurchase() {
+    var currentProduct = $(this)
+      .parent()
+      .parent()
+      .data("product");
+      //deleteProduct(currentProduct.id);
+      window.location.href = "/checkout?product_id=" + currentProduct.id;
+  }
+
+
   // This function displays a message when there are no posts
   function displayEmpty() {
     productContainer.empty();
     var messageH2 = $("<h2>");
     messageH2.css({ "text-align": "center", "margin-top": "50px" });
-    messageH2.html("No posts yet for this category, navigate <a href='/seller_manager'>here</a> in order to create a new post.");
+    messageH2.html("No products yet , navigate <a href='/seller_manager'>here</a> if you want to sell a product.");
     productContainer.append(messageH2);
   }
 

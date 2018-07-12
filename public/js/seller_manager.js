@@ -1,4 +1,17 @@
+function readURL(input) {
+  if (input.files && input.files[0]) {
+      var reader = new FileReader();
 
+      reader.onload = function (e) {
+          $('#img')
+              .attr('src', e.target.result)
+              .width(150)
+              .height(200);
+      };
+
+      reader.readAsDataURL(input.files[0]);
+  }
+}
 $(document).ready(function() {
   // Gets an optional query string from our url (i.e. ?product_id=23)
   var url = window.location.search;

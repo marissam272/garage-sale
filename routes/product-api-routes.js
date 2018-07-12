@@ -36,6 +36,9 @@ module.exports = function(app) {
     });
   });
 
+
+  
+
   // POST route for saving a new post
   app.post("/api/products", function(req, res) {
     db.product.create(req.body).then(function(dbProduct) {
