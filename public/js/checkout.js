@@ -1,36 +1,36 @@
 $(document).ready(function () {
 
-  var checkoutContainer = $(".checkout-container");
 
+  //container to hold our details
+  var checkoutContainer = $(".checkout-container");
+  //buttons for confirmation and cancelation of purchase
   $(document).on("click", "button.confirm", handleProductConfirm);
   $(document).on("click", "button.cancel", handleProductCancel);
 
   var products;
 
+  //the following code helps to grab id from the url and pass it to the get function
   var url = window.location.search;
-  var id = url.substring(url.lastIndexOf('=')+1);
+  var idurl = url.substring(url.lastIndexOf('=') + 1);
   console.log(url);
-  console.log(id);
+  console.log(idurl);
 
-  getProducts(id);
+  getProducts(idurl);
 
-  function getProducts(id) {
+  //get all our data from db
+  function getProducts(idurl) {
 
-  
+    $.get("/api/products", function (data) {
+      console.log("Products", data);
+      products = data;
+      if (!products || !products.length) {
+        displayEmpty();
+      }
+      else {
+        initializeRows(idurl);
+      }
+    });
 
-      $.get("/api/products", function (data) {
-        console.log("Products", data);
-        products = data;
-        if (!products || !products.length) {
-          displayEmpty();
-        }
-        else {
-          initializeRows();
-        }
-      });
-
-    
-    
   }
 
   // This function displays a message when there are no items in checkout
@@ -42,15 +42,29 @@ $(document).ready(function () {
     checkoutContainer.append(messageH2);
   }
 
-  function initializeRows() {
-    checkoutContainer.empty();
+  // following function displays the product with the id grabbed from the url
+  function initializeRows(idurl) {
+    //checkoutContainer.empty();
     var productsToAdd = [];
+    var productsinCheckout = [];
+
     for (var i = 0; i < products.length; i++) {
-      productsToAdd.push(createNewRow(products[i]));
+      if (products[i].id == idurl) {
+        productsToAdd.push(createNewRow(products[i]));
+      }
     }
     checkoutContainer.append(productsToAdd);
+
+    for (var i = 0; i < products.length; i++) {
+      if (products[i].checkout) {
+        productsinCheckout.push(createNewRow(products[i]));
+      }
+    }
+    checkoutContainer.append(productsinCheckout);
+    
   }
 
+  //this holds our product details and buttons
   function createNewRow(product) {
     var newProductCard = $("<div class='container'>");
     newProductCard.addClass("card");
@@ -61,12 +75,12 @@ $(document).ready(function () {
     cancelBtn.text("Cancel");
     cancelBtn.addClass("cancel btn btn-danger");
 
-  
+
     var confirmBtn = $("<button>");
     confirmBtn.text("CONFIRM PURCHASE");
     confirmBtn.addClass("confirm btn btn-success");
     var newProductName = $("<h2>");
-    
+
 
     var newProductCardBody = $("<div>");
     newProductCardBody.addClass("card-body");
@@ -75,15 +89,15 @@ $(document).ready(function () {
     var newProductPrice = $("<p>");
     var newProductImg = $("<p>");
 
-    newProductName.text(product.name + " ");
-    newProductBody.text(product.description);
-    newProductPrice.text(product.price);
-    newProductImg.text(product.img);
-    
+    newProductName.text("NAME : " +product.name + " ");
+    newProductBody.text("ABOUT : " +product.description);
+    newProductPrice.text("COST : " +product.price);
+    newProductImg.text("IMAGE : " +product.img);
+
     newProductCardHeading.append(newProductName);
     newProductCardHeading.append(cancelBtn);
     newProductCardHeading.append(confirmBtn);
-   
+
     newProductCardBody.append(newProductBody);
     newProductCardBody.append(newProductPrice);
     newProductCardBody.append(newProductImg);
@@ -93,29 +107,33 @@ $(document).ready(function () {
     return newProductCard;
   }
 
-  function handleProductCancel(){
+  //handle an order cancelllation
+
+  function handleProductCancel() {
     window.location.href = "/view_products";
   }
 
-  function handleProductConfirm(){
 
-    console.log("herer");
+
+  //handle a checkout confirmation
+  function handleProductConfirm() {
+
     var currentProduct = $(this)
-    .parent()
-    .parent()
-    .data("product");
+      .parent()
+      .parent()
+      .data("product");
     deleteProduct(currentProduct.id);
-
-    console.log("herer");
 
   }
 
-  function display(){
+
+  //display empty@here if nothing purchased
+  function display() {
 
     checkoutContainer.empty();
     var messageH1 = $("<h1>");
     var messageH2 = $("<h2>");
-    messageH1.css({"text-align":"center","margin-top":"50px","color":"green"});
+    messageH1.css({ "text-align": "center", "margin-top": "50px", "color": "green" });
     messageH2.css({ "text-align": "center", "margin-top": "50px" });
     messageH1.html("SUCCESS");
     messageH2.html("Shop again , navigate <a href='/view_products'>here</a> .");
@@ -129,7 +147,7 @@ $(document).ready(function () {
       method: "DELETE",
       url: "/api/products/" + id
     })
-      .then(function() {
+      .then(function () {
         display();
       });
   }

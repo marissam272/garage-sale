@@ -1,17 +1,4 @@
-function readURL(input) {
-  if (input.files && input.files[0]) {
-      var reader = new FileReader();
 
-      reader.onload = function (e) {
-          $('#img')
-              .attr('src', e.target.result)
-              .width(150)
-              .height(200);
-      };
-
-      reader.readAsDataURL(input.files[0]);
-  }
-}
 $(document).ready(function() {
   // Gets an optional query string from our url (i.e. ?product_id=23)
   var url = window.location.search;
@@ -32,8 +19,7 @@ $(document).ready(function() {
   var productForm = $("#product-form");
   var priceValue = $("#price");
   var imagevalue=$("#img");
-            // Giving the postCategorySelect a default value
-            // postCategorySelect.val("Personal");
+            
   // Adding an event listener for when the form is submitted
   $(productForm).on("submit", function handleFormSubmit(event) {
     event.preventDefault();
@@ -42,7 +28,7 @@ $(document).ready(function() {
           || !imagevalue.val().trim()) {
       return;
     }
-    // Constructing a newProductt object to hand to the database
+    // Constructing a newProduct object to hand to the database
     var newProduct = {
       name: nameInput.val().trim(),
       description: descriptionInput.val().trim(),
@@ -52,8 +38,8 @@ $(document).ready(function() {
 
     console.log(newProduct);
 
-    // If we're updating a post run updatePost to update a post
-    // Otherwise run submitPost to create a whole new post
+    // If we're updating a product run updateProduct to update a product
+    // Otherwise run submitProduct to create a whole new product
     if (updating) {
       newProduct.id = productId;
       updateProduct(newProduct);
@@ -63,7 +49,7 @@ $(document).ready(function() {
     }
   });
 
-  // Submits a new post and brings user to blog page upon completion
+  // Submits a new product and brings user to views page upon completion
   function submitProduct(product) {
     $.post("/api/products/", product, function() {
       window.location.href = "/view_products";

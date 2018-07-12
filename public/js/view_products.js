@@ -7,15 +7,13 @@ $(document).ready(function() {
   $(document).on("click", "button.delete", handleProductDelete);
   $(document).on("click", "button.edit", handleProductEdit);
   $(document).on("click","button.buy",handleProductPurchase);
-  //postCategorySelect.on("change", handleCategoryChange);
+  
+  
   var products;
 
   // This function grabs posts from the database and updates the view
   function getProducts() {
-    // var categoryString = category || "";
-    // if (categoryString) {
-    //   categoryString = "/category/" + categoryString;
-    // }
+    
     $.get("/api/products", function(data) {
       console.log("Products", data);
       products = data;
@@ -71,15 +69,7 @@ $(document).ready(function() {
     buyBtn.text("INTERESTED ? BUY IT");
     buyBtn.addClass("buy btn btn-success");
     var newProductName = $("<h2>");
-    //var newPostDate = $("<small>");
-    //var newPostCategory = $("<h5>");
-    //newPostCategory.text(post.category);
-    // newPostCategory.css({
-    //   float: "right",
-    //   "font-weight": "700",
-    //   "margin-top":
-    //   "-15px"
-    // });
+    
     var newProductCardBody = $("<div>");
     newProductCardBody.addClass("card-body");
 
@@ -91,16 +81,14 @@ $(document).ready(function() {
     newProductBody.text(product.description);
     newProductPrice.text(product.price);
     newProductImg.text(product.img);
-    //var formattedDate = new Date(post.createdAt);
-    //formattedDate = moment(formattedDate).format("MMMM Do YYYY, h:mm:ss a");
-    //newPostDate.text(formattedDate);
-    //newPostTitle.append(newPostDate);
+    
+
     newProductCardHeading.append(newProductName);
     newProductCardHeading.append(deleteBtn);
     newProductCardHeading.append(editBtn);
     newProductCardHeading.append(buyBtn);
     
-    //newProductCardHeading.append(newPostCategory);
+    
     newProductCardBody.append(newProductBody);
     newProductCardBody.append(newProductPrice);
     newProductCardBody.append(newProductImg);
@@ -136,8 +124,14 @@ $(document).ready(function() {
       .parent()
       .parent()
       .data("product");
-      //deleteProduct(currentProduct.id);
-      window.location.href = "/checkout?product_id=" + currentProduct.id;
+      console.log(currentProduct.id);
+      
+      $.ajax({
+        method: "PUT",
+        url: "/api/products/" + currentProduct.id,
+        checkout: true
+      }).then(window.location.href = "/checkout?product_id=" + currentProduct.id);
+      //window.location.href = "/checkout?product_id=" + currentProduct.id;
   }
 
 
@@ -149,11 +143,5 @@ $(document).ready(function() {
     messageH2.html("No products yet , navigate <a href='/seller_manager'>here</a> if you want to sell a product.");
     productContainer.append(messageH2);
   }
-
-  // This function handles reloading new posts when the category changes
-  // function handleCategoryChange() {
-  //   var newPostCategory = $(this).val();
-  //   getPosts(newPostCategory);
-  // }
 
 });
