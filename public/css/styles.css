@@ -7,3 +7,10 @@ body {
     text-align: center;
     font-family: 'Shrikhand', cursive;
 }
+
+/* css for view.html*/
+
+.card{
+    background-color: rgb(223, 236, 233);
+    text-align: center;
+}
