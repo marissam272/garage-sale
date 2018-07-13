@@ -1,8 +1,12 @@
 
 $(document).ready(function() {
   // Gets an optional query string from our url (i.e. ?product_id=23)
+  var productContainer = $(".product-container");
   var url = window.location.search;
   var productId;
+  //buttons for editing and deleting
+  $(document).on("click", "button.delete", handleProductDelete);
+  $(document).on("click", "button.edit", handleProductEdit);
   // Sets a flag for whether or not we're updating a post to be false initially
   var updating = false;
 
@@ -83,4 +87,115 @@ $(document).ready(function() {
         window.location.href = "/view_products";
       });
   }
+
+
+  getProducts();
+  //delete and update
+
+  function handleProductDelete() {
+    var currentProduct = $(this)
+      .parent()
+      .parent()
+      .data("product");
+    deleteProduct(currentProduct.id);
+  }
+
+  // This function figures out which post we want to edit and takes it to the
+  // Appropriate url
+  function handleProductEdit() {
+    var currentProduct = $(this)
+      .parent()
+      .parent()
+      .data("product");
+    window.location.href = "/seller_manager?product_id=" + currentProduct.id;
+  }
+
+   // This function does an API call to delete posts
+   function deleteProduct(id) {
+    $.ajax({
+      method: "DELETE",
+      url: "/api/products/" + id
+    })
+      .then(function() {
+        getProducts();
+      });
+  }
+
+  // This function grabs posts from the database and updates the view
+  function getProducts() {
+    
+    $.get("/api/products", function(data) {
+      console.log("Products", data);
+      products = data;
+      if (!products || !products.length) {
+        displayEmpty();
+      }
+      else {
+        initializeRows();
+      }
+    });
+  }
+
+  function displayEmpty() {
+    productContainer.empty();
+    var messageH2 = $("<h2>");
+    messageH2.css({ "text-align": "center", "margin-top": "50px" });
+    messageH2.html("No products yet ,if you want to sell a product add it.");
+    productContainer.append(messageH2);
+  }
+
+  function initializeRows() {
+    productContainer.empty();
+    var productsToAdd = [];
+    for (var i = 0; i < products.length; i++) {
+      productsToAdd.push(createNewRow(products[i]));
+    }
+    productContainer.append(productsToAdd);
+  }
+
+  // This function constructs a post's HTML
+  function createNewRow(product) {
+    var newProductCard = $("<div class='container'>");
+    newProductCard.addClass("card");
+    var newProductCardHeading = $("<div>");
+    newProductCardHeading.addClass("card-header");
+
+    var deleteBtn = $("<button>");
+    deleteBtn.text("x");
+    deleteBtn.addClass("delete btn btn-danger");
+
+    var editBtn = $("<button>");
+    editBtn.text("EDIT");
+    editBtn.addClass("edit btn btn-primary");
+
+    
+    var newProductName = $("<h2>");
+    
+    var newProductCardBody = $("<div>");
+    newProductCardBody.addClass("card-body");
+
+    var newProductBody = $("<p>");
+    var newProductPrice = $("<p>");
+    var newProductImg = $("<p>");
+
+    newProductName.text(product.name + " ");
+    newProductBody.text(product.description);
+    newProductPrice.text(product.price);
+    newProductImg.text(product.img);
+    
+
+    newProductCardHeading.append(newProductName);
+    newProductCardHeading.append(deleteBtn);
+    newProductCardHeading.append(editBtn);
+   
+    
+    newProductCardBody.append(newProductBody);
+    newProductCardBody.append(newProductPrice);
+    newProductCardBody.append(newProductImg);
+    newProductCard.append(newProductCardHeading);
+    newProductCard.append(newProductCardBody);
+    newProductCard.data("product", product);
+    return newProductCard;
+  }
+
 });

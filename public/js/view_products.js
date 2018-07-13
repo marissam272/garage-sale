@@ -3,9 +3,7 @@ $(document).ready(function() {
   // productContainer holds all of our posts
   var productContainer = $(".product-container");
   //var postCategorySelect = $("#category");
-  // Click events for the edit and delete buttons
-  $(document).on("click", "button.delete", handleProductDelete);
-  $(document).on("click", "button.edit", handleProductEdit);
+ 
   $(document).on("click","button.buy",handleProductPurchase);
   
   
@@ -57,13 +55,7 @@ $(document).ready(function() {
     var newProductCardHeading = $("<div>");
     newProductCardHeading.addClass("card-header");
 
-    var deleteBtn = $("<button>");
-    deleteBtn.text("x");
-    deleteBtn.addClass("delete btn btn-danger");
-
-    var editBtn = $("<button>");
-    editBtn.text("EDIT");
-    editBtn.addClass("edit btn btn-primary");
+    
 
     var buyBtn = $("<button>");
     buyBtn.text("INTERESTED ? BUY IT");
@@ -84,8 +76,7 @@ $(document).ready(function() {
     
 
     newProductCardHeading.append(newProductName);
-    newProductCardHeading.append(deleteBtn);
-    newProductCardHeading.append(editBtn);
+    
     newProductCardHeading.append(buyBtn);
     
     
