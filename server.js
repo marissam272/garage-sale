@@ -104,7 +104,9 @@ var register = require('./routes/user-register.js');
   
 app.use('/register', register);
 
+var login = require('./routes/user-login.js');
 
+app.use('/login', login);
 
 // Requiring our models for syncing
   var db = require("./models");
