@@ -11,7 +11,8 @@ body {
 /* css for view.html*/
 
 .card{
-    background-color: rgb(223, 236, 233);
+    /* background-color: rgb(223, 236, 233); */
+    background-color: white;
     text-align: center;
 }
 
@@ -23,4 +24,12 @@ body {
 .btn {
     background-image: url("qbkls.png");
     color: black;
+}
+
+#product-form {
+    padding-bottom: 50px;
+    padding-top: 50px;
+}
+.new-item {
+    margin-bottom: 25px;
 }
