@@ -30,6 +30,11 @@ module.exports = function(app) {
     res.sendFile(path.join(__dirname, "../public/seller_manager.html"));
   });
 
+  // view page goes to checkout page
+  app.get("/checkout", function(req, res) {
+    res.sendFile(path.join(__dirname, "../public/checkout.html"));
+  });
+
 
 
  };

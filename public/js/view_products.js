@@ -3,18 +3,15 @@ $(document).ready(function() {
   // productContainer holds all of our posts
   var productContainer = $(".product-container");
   //var postCategorySelect = $("#category");
-  // Click events for the edit and delete buttons
-  $(document).on("click", "button.delete", handleProductDelete);
-  $(document).on("click", "button.edit", handleProductEdit);
-  //postCategorySelect.on("change", handleCategoryChange);
+ 
+  $(document).on("click","button.buy",handleProductPurchase);
+  
+  
   var products;
 
   // This function grabs posts from the database and updates the view
   function getProducts() {
-    // var categoryString = category || "";
-    // if (categoryString) {
-    //   categoryString = "/category/" + categoryString;
-    // }
+    
     $.get("/api/products", function(data) {
       console.log("Products", data);
       products = data;
@@ -53,41 +50,39 @@ $(document).ready(function() {
 
   // This function constructs a post's HTML
   function createNewRow(product) {
-    var newProductCard = $("<div>");
+    var newProductCard = $("<div class='container'>");
     newProductCard.addClass("card");
     var newProductCardHeading = $("<div>");
     newProductCardHeading.addClass("card-header");
-    var deleteBtn = $("<button>");
-    deleteBtn.text("x");
-    deleteBtn.addClass("delete btn btn-danger");
-    var editBtn = $("<button>");
-    editBtn.text("EDIT");
-    editBtn.addClass("edit btn btn-default");
+
+    
+
+    var buyBtn = $("<button>");
+    buyBtn.text("INTERESTED ? BUY IT");
+    buyBtn.addClass("buy btn btn-success");
     var newProductName = $("<h2>");
-    //var newPostDate = $("<small>");
-    //var newPostCategory = $("<h5>");
-    //newPostCategory.text(post.category);
-    // newPostCategory.css({
-    //   float: "right",
-    //   "font-weight": "700",
-    //   "margin-top":
-    //   "-15px"
-    // });
+    
     var newProductCardBody = $("<div>");
     newProductCardBody.addClass("card-body");
 
     var newProductBody = $("<p>");
+    var newProductPrice = $("<p>");
+    var newProductImg = $("<p>");
+
     newProductName.text(product.name + " ");
     newProductBody.text(product.description);
-    //var formattedDate = new Date(post.createdAt);
-    //formattedDate = moment(formattedDate).format("MMMM Do YYYY, h:mm:ss a");
-    //newPostDate.text(formattedDate);
-    //newPostTitle.append(newPostDate);
-    newProductCardHeading.append(deleteBtn);
-    newProductCardHeading.append(editBtn);
+    newProductPrice.text(product.price);
+    newProductImg.text(product.img);
+    
+
     newProductCardHeading.append(newProductName);
-    //newProductCardHeading.append(newPostCategory);
+    
+    newProductCardHeading.append(buyBtn);
+    
+    
     newProductCardBody.append(newProductBody);
+    newProductCardBody.append(newProductPrice);
+    newProductCardBody.append(newProductImg);
     newProductCard.append(newProductCardHeading);
     newProductCard.append(newProductCardBody);
     newProductCard.data("product", product);
@@ -114,19 +109,30 @@ $(document).ready(function() {
     window.location.href = "/seller_manager?product_id=" + currentProduct.id;
   }
 
+  //fuunction to handle buy functionality
+  function handleProductPurchase() {
+    var currentProduct = $(this)
+      .parent()
+      .parent()
+      .data("product");
+      console.log(currentProduct.id);
+      
+      $.ajax({
+        method: "PUT",
+        url: "/api/products/" + currentProduct.id,
+        checkout: true
+      }).then(window.location.href = "/checkout?product_id=" + currentProduct.id);
+      //window.location.href = "/checkout?product_id=" + currentProduct.id;
+  }
+
+
   // This function displays a message when there are no posts
   function displayEmpty() {
     productContainer.empty();
     var messageH2 = $("<h2>");
     messageH2.css({ "text-align": "center", "margin-top": "50px" });
-    messageH2.html("No posts yet for this category, navigate <a href='/seller_manager'>here</a> in order to create a new post.");
+    messageH2.html("No products yet , navigate <a href='/seller_manager'>here</a> if you want to sell a product.");
     productContainer.append(messageH2);
   }
-
-  // This function handles reloading new posts when the category changes
-  // function handleCategoryChange() {
-  //   var newPostCategory = $(this).val();
-  //   getPosts(newPostCategory);
-  // }
 
 });
