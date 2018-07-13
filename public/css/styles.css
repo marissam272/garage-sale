@@ -14,3 +14,13 @@ body {
     background-color: rgb(223, 236, 233);
     text-align: center;
 }
+
+.navbar {
+    background-image: url("mekong-green.png");
+    border-bottom: 6px solid darkgray;
+}
+
+.btn {
+    background-image: url("qbkls.png");
+    color: black;
+}
