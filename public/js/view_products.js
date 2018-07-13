@@ -8,8 +8,91 @@ $(document).ready(function() {
   $(document).on("click", "button.edit", handleProductEdit);
   $(document).on("click","button.buy",handleProductPurchase);
   
+  $(document).on("click", ".product_container", handleView);
+  
   
   var products;
+
+  /////////////////////////////////////////////////
+  // product_description.html js code
+  var description = $(".description_container");
+  var product;
+  function getProduct() {
+      
+    $.get("/api/products/:id", function(data) {
+      console.log("Products", data);
+      product = data;
+      if (!product || !product.length) {
+        displayEmpty();
+      }
+      else {
+        initializeRow();
+      }
+    });
+  }
+//fuunction to handle buy functionality
+function handleView() {
+  var currentProduct = $(this)
+    .parent()
+    .parent()
+    .data("product");
+    console.log(currentProduct.id);
+    
+    $.ajax({
+      method: "PUT",
+      url: "/api/products/:id" + currentProduct.id,
+      checkout: true
+    }).then(window.location.href = "/product_description.html?product_id=" + currentProduct.id);
+    //window.location.href = "/checkout?product_id=" + currentProduct.id;
+}
+
+  getProduct();
+
+  function initializeRow() {
+    description.empty();
+    var productToAdd = [];
+    productToAdd.push(createNewRow1(product));
+    description.append(productToAdd);
+  }
+
+  // This function constructs a post's HTML
+  function createNewRow1(product) {
+    var newProductCard = $("<div class='container'>");
+    newProductCard.addClass("card");
+    var newProductCardHeading = $("<div>");
+    newProductCardHeading.addClass("card-header");
+
+    var buyBtn = $("<button>");
+    buyBtn.text("INTERESTED ? BUY IT");
+    buyBtn.addClass("buy btn btn-success");
+    var newProductName = $("<h2>");
+    
+    var newProductCardBody = $("<div>");
+    newProductCardBody.addClass("card-body");
+
+    var newProductBody = $("<p>");
+    var newProductPrice = $("<p>");
+    var newProductImg = $("<p>");
+
+    newProductName.text(product.name + " ");
+    newProductBody.text(product.description);
+    newProductPrice.text(product.price);
+    newProductImg.text(product.img);
+
+    newProductCardHeading.append(newProductName);
+    newProductCardHeading.append(buyBtn);
+
+    newProductCardBody.append(newProductBody);
+    newProductCardBody.append(newProductPrice);
+    newProductCardBody.append(newProductImg);
+    newProductCard.append(newProductCardHeading);
+    newProductCard.append(newProductCardBody);
+    newProductCard.data("product", product);
+    return newProductCard;
+  }
+// end product_description.html js code
+/////////////////////////////////////////////////////
+
 
   // This function grabs posts from the database and updates the view
   function getProducts() {
@@ -128,9 +211,9 @@ $(document).ready(function() {
       
       $.ajax({
         method: "PUT",
-        url: "/api/products/" + currentProduct.id,
+        url: "/api/products/:id" + currentProduct.id,
         checkout: true
-      }).then(window.location.href = "/checkout?product_id=" + currentProduct.id);
+      }).then(window.location.href = "/product_description?product_id=" + currentProduct.id);
       //window.location.href = "/checkout?product_id=" + currentProduct.id;
   }
 
