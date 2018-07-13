@@ -1,0 +1,35 @@
+body {
+    background-image: url("light-veneer.png");
+}
+
+.jumbotron {
+    background-image: url("mekong-green.png");
+    text-align: center;
+    font-family: 'Shrikhand', cursive;
+}
+
+/* css for view.html*/
+
+.card{
+    /* background-color: rgb(223, 236, 233); */
+    background-color: white;
+    text-align: center;
+}
+
+.navbar {
+    background-image: url("mekong-green.png");
+    border-bottom: 6px solid darkgray;
+}
+
+.btn {
+    background-image: url("qbkls.png");
+    color: black;
+}
+
+#product-form {
+    padding-bottom: 50px;
+    padding-top: 50px;
+}
+.new-item {
+    margin-bottom: 25px;
+}
