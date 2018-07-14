@@ -43,6 +43,20 @@ body {
     color: black;
 }
 
+.btn-primary, .btn-success {
+    color: black;
+    border: 2px solid darkgray;
+}
+.btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active, .open>.dropdown-toggle.btn-primary {
+    color: darkgray;
+    border: 2px solid darkgray;
+}
+
+.btn-success:hover {
+    color: darkgray;
+    border: 2px solid darkgray;
+}
+
 #product-form {
     padding-bottom: 25px;
     padding-top: 25px;
