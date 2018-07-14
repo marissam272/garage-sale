@@ -3,9 +3,20 @@ body {
 }
 
 .jumbotron {
-    background-image: url("mekong-green.png");
+    /* background-image: url("mekong-green.png"); */
+    background-image: url("light-veneer.png");
     text-align: center;
     font-family: 'Shrikhand', cursive;
+}
+
+footer {
+    background-image: url("mekong-green.png");
+    border-top: 6px solid darkgray;
+    text-align: center;
+    position:absolute;
+   bottom:0;
+   width:100%;
+   /* height:60px;  */
 }
 
 /* css for view.html*/
@@ -41,6 +52,7 @@ body {
 .btn {
     background-image: url("qbkls.png");
     color: black;
+    border: 2px solid darkgray;
 }
 
 .btn-primary, .btn-success {
@@ -63,4 +75,8 @@ body {
 }
 .new-item {
     margin-bottom: 25px;
+}
+
+.container {
+    padding-top: 25px;
 }
