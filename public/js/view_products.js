@@ -128,7 +128,7 @@ $(document).ready(function() {
     
 
     var buyBtn = $("<button>");
-    buyBtn.text("INTERESTED ? BUY IT");
+    buyBtn.text("Checkout Now!");
     buyBtn.addClass("buy btn btn-success");
     var newProductName = $("<h2>");
     
