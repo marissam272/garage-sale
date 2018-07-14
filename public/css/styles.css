@@ -10,10 +10,13 @@ body {
 
 /* css for view.html*/
 
-.card{
+.card {
     /* background-color: rgb(223, 236, 233); */
     background-color: white;
     text-align: center;
+    margin-top: 25px;
+    margin-bottom: 25px;
+    margin-left: 25px;
 }
 
 .navbar {
@@ -27,8 +30,8 @@ body {
 }
 
 #product-form {
-    padding-bottom: 50px;
-    padding-top: 50px;
+    padding-bottom: 25px;
+    padding-top: 25px;
 }
 .new-item {
     margin-bottom: 25px;
