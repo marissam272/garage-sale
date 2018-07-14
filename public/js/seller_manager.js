@@ -156,7 +156,7 @@ $(document).ready(function() {
   // This function constructs a post's HTML
   function createNewRow(product) {
     var newProductCard = $("<div class='container'>");
-    newProductCard.addClass("card");
+    newProductCard.addClass("cardfordisplay");
     var newProductCardHeading = $("<div>");
     newProductCardHeading.addClass("card-header");
 
