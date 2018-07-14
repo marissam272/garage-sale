@@ -4,7 +4,7 @@ var userNameInput = $("#username");
 var userPassword = $("#password");
           
 // Adding an event listener for when the form is submitted
-$(document).on("submit", function handleFormSubmit(event) {
+$("#sendUserInput").on("click", function handleFormSubmit(event) {
   event.preventDefault();
   // Wont submit the post if we are missing a body or a title
   if (!userNameInput.val().trim() || !userPassword.val().trim()) {

@@ -12,10 +12,12 @@ router.get('/', function(req, res, next){
 });
 
 router.post('/', function(req,res,next) {
-  pg.connect(connectionString, function(err, client){
+  db.connect(
+    // connectionString,
+     function(err, client){
 
-    db.user.create(req.body).then(function(dbuser) {
-      res.json(dbuser);
+    db.user.create(req.body).then(function(dbUser) {
+      res.json(dbUser);
     });
 
     query.on('end', function(){
@@ -27,3 +29,9 @@ router.post('/', function(req,res,next) {
 });
 
 module.exports = router;
+
+router.post("/register", function(req, res){
+  db.user.create(req.body).then(function(dbUser){
+res.json(dbUser);
+  });
+});

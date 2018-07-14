@@ -11,7 +11,7 @@ var session = require('express-session');
 var localStrategy = require('passport-local').Strategy;
 var router = express.Router();
 var path = require('path');
-
+var bcrypt = require('bcrypt');
 // Sets up the Express App
 // =============================================================
 var app = express();
@@ -21,11 +21,13 @@ passport.use('local', new localStrategy({
   passReqToCallback : true,
   usernameField: 'username'
 },
+
+
 function(req, username, password, done){
 console.log('called local');
-pg.connect(connectionString, function (err, client) {
+db.connect(connectionString, function (err, client) {
  
- console.log('called local - pg');
+ console.log('called local - db');
 
  var user = {};
 
@@ -74,10 +76,10 @@ passport.serializeUser(function(user, done) {
 
 passport.deserializeUser(function(id, done) {
      console.log('called deserializeUser');
-     pg.connect(connection, function (err, client) {
+     db.connect(connection, function (err, client) {
      
        var user = {};
-       console.log('called deserializeUser - pg');
+       console.log('called deserializeUser - db');
          var query = client.query("SELECT * FROM users WHERE id = $1", [id]);
      
          query.on('row', function (row) {

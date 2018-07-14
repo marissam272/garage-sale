@@ -4,4 +4,16 @@ $(document).ready(function() {
   var userPassword = $("#password");
 
 
+  var userObj = {
+    username: 'tom',
+    password: 'tom123'
+  }
+
+  console.log('hellooooo from js file!')
+  $.post("/login", userObj, function(thingWeGotBack) {
+    
+    console.log('thingWeGotBack =====', thingWeGotBack);
+
+  });
+
 });
