@@ -10,10 +10,26 @@ body {
 
 /* css for view.html*/
 
-.card{
+.cardfordisplay{
     /* background-color: rgb(223, 236, 233); */
     background-color: white;
     text-align: center;
+    float: left;
+    width: 20%;
+    /* margin: 9.33%; */
+    margin-top: 5%;
+    margin-right: 2.5%;
+    margin-left: 2.5%;
+}
+
+
+.card {
+    /* background-color: rgb(223, 236, 233); */
+    background-color: white;
+    text-align: center;
+    margin-top: 25px;
+    margin-bottom: 25px;
+    margin-left: 25px;
 }
 
 .navbar {
@@ -27,8 +43,8 @@ body {
 }
 
 #product-form {
-    padding-bottom: 50px;
-    padding-top: 50px;
+    padding-bottom: 25px;
+    padding-top: 25px;
 }
 .new-item {
     margin-bottom: 25px;
