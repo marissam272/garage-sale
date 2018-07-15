@@ -1,7 +1,12 @@
 module.exports = function(sequelize, DataTypes) {
     var User = sequelize.define("User", {
       // Giving the User model a name of type STRING
-      login: {
+      id: {
+        autoIncrement: true,
+        primaryKey: true,
+        type: DataTypes.INTEGER
+    },
+    email: {
           type:DataTypes.STRING
     },
       password: {
@@ -10,7 +15,6 @@ module.exports = function(sequelize, DataTypes) {
         // len: [1]
       }
     });
-
-  
+      
     return User;
   };

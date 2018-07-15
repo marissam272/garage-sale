@@ -3,14 +3,14 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Page Title</title>lc
+    <title>Page Title</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
     <script
         src="https://code.jquery.com/jquery-3.3.1.min.js"
         integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
         crossorigin="anonymous"></script>
-    <script src="./js/user-login.js"></script>
+    <!-- <script src="./js/user-login.js"></script> -->
 </head>
 <body>
     
@@ -25,9 +25,35 @@
         </div>
         <div>
             <input type="submit" value="Log In"/>
-            <a href="/register">Register</a>
+            <a href="/signup">signup</a>
         </div>
+        <div>
+                <input type="submit" value="Log out"/>
+                <a href="/logout">logout</a>
+            </div>
      </form>
+
+
+     <script>
+        var userNameInput = $("#username");
+        var userPassword = $("#password");
+
+
+        var userObj = {
+            email: 'tom@tom.com',
+            password: 'tom123'
+        }
+
+        console.log('hellooooo from js file!')
+        $.post("/login", userObj, function(thingWeGotBack) {
+            
+            console.log("money");
+            // console.log('thingWeGotBack =====', thingWeGotBack);
+
+            // window.location.href = '/login/nextPage'
+
+        });     
+     </script>
 
 
 </body>

@@ -5,8 +5,8 @@ $(document).ready(function() {
 
 
   var userObj = {
-    username: 'tom',
-    password: 'tom123'
+    username: "jeff",
+    password: "1"
   }
 
   console.log('hellooooo from js file!')
