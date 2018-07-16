@@ -16,7 +16,7 @@ $(sendInput).on("click", function handleFormSubmit(event) {
 
   // Constructing a newuser object to hand to the database
   var newUser = {
-    name: userNameInput.val(),
+    email: userNameInput.val(),
     password: userPassword.val()
   };
 

@@ -3,7 +3,7 @@ var bodyParser = require("body-parser");
 var passport = require('passport');
 var session = require('express-session');
 var localStrategy = require('passport-local').Strategy;
-var router = express.Router();
+// var router = express.Router();
 var path = require('path');
 var bcrypt = require('bcrypt');
 var app = express();
@@ -20,14 +20,6 @@ var db = require("./models");
 app.use(passport.initialize());
 app.use(passport.session());
 require('./config/passport/passport.js')(passport,db.User);
-
-// var signup = require('./routes/users.js');
-  
-// app.use('/signup', signup);
-
-
-
-// app.use('/login', login);
 
 
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -46,4 +38,6 @@ require('./routes/users')(app, passport);
   app.listen(PORT, function() {
     console.log("App listening on PORT " + PORT);
   });
+
+  
  });
