@@ -39,6 +39,7 @@ app.use(express.static("public"));
 require("./routes/html-routes.js")(app);
 require("./routes/product-api-routes.js")(app);
 
+// var authRoute = require('./routes/users')(app);
 require('./routes/users')(app, passport);
 
  db.sequelize.sync().then(function() {

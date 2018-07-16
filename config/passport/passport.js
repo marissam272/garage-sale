@@ -31,30 +31,30 @@
   passport.use('local-signup', new LocalStrategy(
 
     {           
-      usernameField : 'email',
+      usernameField : 'name',
       passwordField : 'password',
       passReqToCallback : true // allows us to pass back the entire request to the callback
     },
 
-    function(req, email, password, done){
+    function(req, name, password, done){
        
 
       var generateHash = function(password) {
       return bCrypt.hashSync(password, bCrypt.genSaltSync(8), null);
       };
 
-       User.findOne({where: {email:email}}).then(function(user){
+       User.findOne({where: {name:name}}).then(function(user){
 
       if(user)
       {
-        return done(null, false, {message : 'That email is already taken'} );
+        return done(null, false, {message : 'That name is already taken'} );
       }
 
       else
       {
         var userPassword = generateHash(password);
         var data =
-        { email:email,
+        { name:name,
         password:userPassword,
         firstname: req.body.firstname,
         lastname: req.body.lastname
@@ -93,13 +93,13 @@
     
   {
 
-  // by default, local strategy uses username and password, we will override with email
-  usernameField : 'email',
+  // by default, local strategy uses username and password, we will override with name
+  usernameField : 'name',
   passwordField : 'password',
   passReqToCallback : true // allows us to pass back the entire request to the callback
   },
 
-  function(req, email, password, done) {
+  function(req, name, password, done) {
 
     var User = user;
 
@@ -107,7 +107,7 @@
       return bCrypt.compareSync(password, userpass);
     }
 
-    User.findOne({ where : { email: email}}).then(function (user) {
+    User.findOne({ where : { name: name}}).then(function (user) {
 
       if (!user) {
         return done(null, false, { message: 'Email does not exist' });

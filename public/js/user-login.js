@@ -1,19 +1,19 @@
 $(document).ready(function() {
-      // Getting jQuery references to the product name,description,category,price
-  var userNameInput = $("#username");
-  var userPassword = $("#password");
+  // Getting jQuery references to the user name,description,category,price
+var userNameInput = $("#name");
+var userPassword = $("#password");
+var signupForm = $("signup-form");
+var sendInput = $("#send-input");
+        
+// Adding an event listener for when the form is submitted
+$(sendInput).on("click", function handleFormSubmit(event) {
+event.preventDefault();
+console.log("this is a new user");
+// Wont submit the post if we are missing a body or a title
+if (!userNameInput || !userPassword ){
+  return;
+}
 
-
-  var userObj = {
-    username: "jeff",
-    password: "1"
-  }
-
-  console.log('hellooooo from js file!')
-  $.post("/login", userObj, function(thingWeGotBack) {
-    
-    console.log('thingWeGotBack =====', thingWeGotBack);
-
-  });
+});
 
 });

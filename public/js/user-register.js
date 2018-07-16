@@ -1,22 +1,34 @@
 $(document).ready(function() {
     // Getting jQuery references to the user name,description,category,price
-var userNameInput = $("#username");
+var userNameInput = $("#name");
 var userPassword = $("#password");
+var signupForm = $("signup-form");
+var sendInput = $("#send-input");
           
 // Adding an event listener for when the form is submitted
-$("#sendUserInput").on("click", function handleFormSubmit(event) {
+$(sendInput).on("click", function handleFormSubmit(event) {
   event.preventDefault();
+  console.log("this is a new user");
   // Wont submit the post if we are missing a body or a title
-  if (!userNameInput.val().trim() || !userPassword.val().trim()) {
+  if (!userNameInput || !userPassword ){
     return;
   }
+
   // Constructing a newuser object to hand to the database
   var newUser = {
-    name: userNameInput.val().trim(),
-    password: userPassword.val().trim()
+    name: userNameInput.val(),
+    password: userPassword.val()
   };
 
   console.log(newUser);
+
+  submitUser(newUser);
+
+  function submitUser(users) {
+  $.post("/api/users/", users, function() {
+    // window.location.href = "/seller_manager";
+  });
+}
 });
 
 });

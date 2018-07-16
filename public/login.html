@@ -3,44 +3,62 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Page Title</title>
+    <title>log in</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
-    <script
+    <!-- <script
         src="https://code.jquery.com/jquery-3.3.1.min.js"
         integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-        crossorigin="anonymous"></script>
+        crossorigin="anonymous"></script> -->
     <!-- <script src="./js/user-login.js"></script> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/4.0.0/lumen/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/styles.css" media="screen" title="no title">
+    <link href="https://fonts.googleapis.com/css?family=Shrikhand" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 </head>
 <body>
     
-    <form action="/" method="post">
-        <div>
-            <label for="username">Username:</label>
-            <input type="text" name="username" id="username"/>
-        </div>
-        <div>
-            <label for="password">Password:</label>
-            <input type="password" name="password" id="password"/>
-        </div>
-        <div>
-            <input type="submit" value="Log In"/>
-            <a href="/signup">signup</a>
-        </div>
-        <div>
-                <input type="submit" value="Log out"/>
-                <a href="/logout">logout</a>
+    <form id="login-form">
+
+        <!--idof our form-->
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <h2>Log in</h2>
+                </div>
             </div>
-     </form>
+            <div class="row">
+              <div class="col-12">
+                  <input class="new-item form-control" placeholder="Username" type="text" id="name" />
+                  <input class="new-item form-control" placeholder="Password" type="text" id="password" />
+              </div>
+            </div>
+        </div>
+            <!-- </div>
+          </div> -->
+
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12 text-center">
+                      <button type="submit" id="send-input"  class="btn btn-success">SUBMIT</button>
+                    </div>
+                  </div>
+                </div>
+
+            </div>
+          </div>
+        </div>
+      </form>
 
 
-     <script>
+     <!-- <script>
         var userNameInput = $("#username");
         var userPassword = $("#password");
 
 
         var userObj = {
-            email: 'tom@tom.com',
+            username: 'tom@tom.com',
             password: 'tom123'
         }
 
@@ -50,12 +68,12 @@
             console.log("money");
             // console.log('thingWeGotBack =====', thingWeGotBack);
 
-            // window.location.href = '/login/nextPage'
+            window.location.href = '/seller_manager.html'
 
         });     
-     </script>
+     </script> -->
 
-
+     <script src="js/user-login.js" type="text/javascript"></script>
 </body>
 </html>
 

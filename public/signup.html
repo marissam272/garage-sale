@@ -1,13 +1,18 @@
-<!DOCTYPE html>
-<html>
+<!-- <!DOCTYPE html> -->
+<!-- <html>
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Page Title</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
-    <script src="main.js"></script>
-</head>
+    <!-- <script src="main.js"></script> -->
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/4.0.0/lumen/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/styles.css" media="screen" title="no title">
+    <link href="https://fonts.googleapis.com/css?family=Shrikhand" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script> -->
+<!-- </head>
 <body>
     <form action="/signup" method="post" id="signup">
         <div>
@@ -22,5 +27,95 @@
             <input type="submit" value="signup" id="sendUserInput"/>
         </div>
      </form>
+
+     <script>        console.log('hellooooo from js file!')
+        $.post("/login", userObj, function(thingWeGotBack) {
+            
+            console.log("money");
+            // console.log('thingWeGotBack =====', thingWeGotBack);
+
+            window.location.href = '/login'
+
+        });     
+     </script></script>
+</body>
+</html> -->
+
+!<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Sign up</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <!-- <script
+        src="https://code.jquery.com/jquery-3.3.1.min.js"
+        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script> -->
+    <!-- <script src="./js/user-login.js"></script> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/4.0.0/lumen/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/styles.css" media="screen" title="no title">
+    <link href="https://fonts.googleapis.com/css?family=Shrikhand" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+    
+    <form id="signup-form">
+
+        <!--idof our form-->
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <h2>Sign up</h2>
+                </div>
+            </div>
+            <div class="row">
+              <div class="col-12">
+                  <input class="new-item form-control" placeholder="Create a username" type="text" id="name" />
+                  <input class="new-item form-control" placeholder="Create a Password" type="text" id="password" />
+              </div>
+            </div>
+        </div>
+            <!-- </div>
+          </div> -->
+
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12 text-center">
+                      <button type="submit" id="send-input" class="btn btn-success">SUBMIT</button>
+                    </div>
+                  </div>
+                </div>
+
+            </div>
+          </div>
+        </div>
+      </form>
+      <script src="js/user-register.js" type="text/javascript"></script>
+
+     <!-- <script>
+        var userNameInput = $("#username");
+        var userPassword = $("#password");
+
+
+        var userObj = {
+            username: 'tom@tom.com',
+            password: 'tom123'
+        }
+
+        console.log('hellooooo from js file!')
+        $.post("/login", userObj, function(thingWeGotBack) {
+            
+            console.log("money");
+            // console.log('thingWeGotBack =====', thingWeGotBack);
+
+            window.location.href = '/seller_manager.html'
+
+        });     
+     </script> -->
+
+
 </body>
 </html>

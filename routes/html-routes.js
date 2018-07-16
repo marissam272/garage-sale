@@ -35,6 +35,11 @@ module.exports = function(app) {
     res.sendFile(path.join(__dirname, "../public/checkout.html"));
   });
 
+   // product description page.
+   app.get("/product_description", function(req, res) {
+    res.sendFile(path.join(__dirname, "../public/product_description.html"));
+  });
+
 
 
  };

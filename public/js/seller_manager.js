@@ -22,7 +22,7 @@ $(document).ready(function() {
   var descriptionInput = $("#description");
   var productForm = $("#product-form");
   var priceValue = $("#price");
-  var imagevalue=$("#img");
+  var imagevalue=$("#photo");
             
   // Adding an event listener for when the form is submitted
   $(productForm).on("submit", function handleFormSubmit(event) {
@@ -156,7 +156,7 @@ $(document).ready(function() {
   // This function constructs a post's HTML
   function createNewRow(product) {
     var newProductCard = $("<div class='container'>");
-    newProductCard.addClass("card");
+    newProductCard.addClass("cardfordisplay");
     var newProductCardHeading = $("<div>");
     newProductCardHeading.addClass("card-header");
 
