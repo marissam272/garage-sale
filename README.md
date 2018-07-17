@@ -1,5 +1,6 @@
-# garage-sale
-Garage sale app
+# MeBay
+
+MeBay is a peer-to-peer buying/selling application called Me-bay. App will feature customer and buyer pages. Customers' page will show all products in database. Also will have option to search for products in database by category. Sellers' page will allow sellers to upload products.  
 
 ### Requirements
 
