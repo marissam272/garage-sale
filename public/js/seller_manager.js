@@ -1,6 +1,15 @@
 
-   //function to save file
-   function previewFile(){
+   
+    
+
+
+
+$(document).ready(function() {
+
+//image saving part ************************************
+
+  //function to save file
+  function previewFile(){
     var storage = firebase.storage();
   
     var file = document.getElementById("files").files[0];
@@ -17,20 +26,20 @@
   });
     
   
-    //get request to get URL for uploaded file    
-   thisRef.getDownloadURL().then(function(imgurl) {
-   // $(document).on("click", "button.uploadimg", previewFile);
-     //$( "#url" ).append(imgurl);
-    document.getElementById("photo").value = imgurl;
-    console.log(imgurl);
-    });
+        //get request to get URL for uploaded file    
+      thisRef.getDownloadURL().then(function(imgurl) {
+      // $(document).on("click", "button.uploadimg", previewFile);
+        //$( "#url" ).append(imgurl);
+        document.getElementById("photo").value = imgurl;
+        console.log(imgurl);
+        });
+
+      }
     
-    $(document).on("click", "button.uploadimg", previewFile); 
 
+  $(document).on("click", "button.uploadimg", previewFile); 
 
-
-$(document).ready(function() {
-
+ //************************************image saving ends 
   // Gets an optional query string from our url (i.e. ?product_id=23)
   var productContainer = $(".product-container");
   var url = window.location.search;
@@ -207,12 +216,12 @@ $(document).ready(function() {
 
     var newProductBody = $("<p>");
     var newProductPrice = $("<p>");
-    var newProductImg = $("<p>");
+    var newProductImg = $("<img src =" +product.img + " height='100'width='100' > ");
 
     newProductName.text(product.name + " ");
     newProductBody.text(product.description);
     newProductPrice.text(product.price);
-    newProductImg.text(product.img);
+   // newProductImg.text(product.img);
     
 
     newProductCardHeading.append(newProductName);
@@ -232,4 +241,4 @@ $(document).ready(function() {
   
 });
 
-}
+

@@ -137,12 +137,13 @@ $(document).ready(function() {
 
     var newProductBody = $("<p>");
     var newProductPrice = $("<p>");
-    var newProductImg = $("<p>");
+    var newProductImg = $("<img src =" +product.img + " height='100'width='100' > ");
 
     newProductName.text(product.name + " ");
     newProductBody.text(product.description);
     newProductPrice.text(product.price);
-    newProductImg.text(product.img);
+    //newProductImg.text(product.img);
+    console.log(product.img);
     
 
     newProductCardHeading.append(newProductName);

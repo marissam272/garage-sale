@@ -75,12 +75,12 @@ $(document).ready(function () {
   
       var newProductBody = $("<p>");
       var newProductPrice = $("<p>");
-      var newProductImg = $("<p>");
+      var newProductImg = $("<img src =" +product.img + " height='100'width='100' > ");
   
       newProductName.text("NAME : " +product.name + " ");
       newProductBody.text("ABOUT : " +product.description);
       newProductPrice.text("COST : " +product.price);
-      newProductImg.text("IMAGE : " +product.img);
+      //newProductImg.text("IMAGE : " +product.img);
   
       newProductCardHeading.append(newProductName);
      
