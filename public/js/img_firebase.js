@@ -16,7 +16,7 @@ $(document).ready(function(){
     var storageRef = firebase.storage().ref();
     
 $("#upload").on("click", function() {
-
+    
 var file = document.querySelector('#photo').files[0]; // use the Blob or File API
 console.log(file);
 var name = file.name;
