@@ -1,6 +1,5 @@
 # garage-sale
 Garage sale app
-# Project 2 
 
 ### Requirements
 
