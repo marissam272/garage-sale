@@ -62,14 +62,30 @@
                         <input class="new-item form-control" placeholder="Product name" type="text" id="name" />
                         <input class="new-item form-control" placeholder="Product description" type="text" id="description" />
                         <input class="new-item form-control" placeholder="Product price" type="integer" id="price" />
+                        <!-- <input class="new-item form-control" placeholder="Product price" type="text" id="photo" /> -->
                     </div>
                   </div>
                   <div class="row">
                     <div class="col-sm-12 text-center">
-                      <label for="photo">Product Picture: </label>
+
+                        <div class="btn">
+                            <h1>Upload Image<span style="font-size: 1em; margin-left: 2%"class="glyphicon glyphicon-fire"></span></h1>
+                          <input type="file" onchange="previewFile()" id="files" name="files" />
+                          <!-- <p id="url"></p> -->
+                          
+                          <input class="new-item form-control" placeholder="Image Url" type="hidden" id="photo" />
+                          <button class="uploadimg">Upload then submit</button>
+                            <!-- <div> -->
+                      <!-- <label class="upload_group">
+                        Upload Image
+                        <input type="file" class="upload_group" id="fileupload">
+                      </label>
+                      <button type="btn btn-primary" id="uploadButton">SUBMIT</button> -->
+
+                      <!-- <label for="photo">Product Picture: </label>
                         <input type="file"id="photo" name="photo"accept="image/png, image/jpeg" />
-                            <button type="submit" class="btn" id="upload">Upload</button>
-                    </div>
+                            <button type="submit" class="btn" id="upload">Upload</button> -->
+                    <!-- </div> -->
                   </div>
 
               </div>
@@ -113,11 +129,23 @@
       </div> -->
         <!-- Footer -->
 
+        <script src="https://www.gstatic.com/firebasejs/5.2.0/firebase.js"></script>
+        <script>    
+          // Initialize Firebase
+          var config = {
+              apiKey: "AIzaSyDDT8K7hsQWz-j34R93v-2TpjR1LrgpoTA",
+              authDomain: "mebay-24213.firebaseapp.com",
+              databaseURL: "https://mebay-24213.firebaseio.com",
+              projectId: "mebay-24213",
+              storageBucket: "mebay-24213.appspot.com",
+              messagingSenderId: "907993179232"
+          };
+          firebase.initializeApp(config);
+        </script>
+
   <!-- Custom Script -->
-  <script src="https://www.gstatic.com/firebasejs/5.2.0/firebase.js"></script>
   <script src="js/seller_manager.js" type="text/javascript"></script>
-  <script src="js/img_firebase.js" type="text/javascript"></script>
-  <script src="https://www.gstatic.com/firebasejs/3.4.0/firebase.js"></script>
+  <!-- <script src="js/google-sign-in.js" type="text/javascript"></script> -->
   
 
 </body>
