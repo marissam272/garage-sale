@@ -1,5 +1,36 @@
 
+   //function to save file
+   function previewFile(){
+    var storage = firebase.storage();
+  
+    var file = document.getElementById("files").files[0];
+      //console.log(file);
+    
+    var storageRef = firebase.storage().ref();
+    
+    //dynamically set reference to the file name
+    var thisRef = storageRef.child(file.name);
+  
+    //put request upload file to firebase storage
+    thisRef.put(file).then(function(snapshot) {
+      console.log('Uploaded a blob or file!');
+  });
+    
+  
+    //get request to get URL for uploaded file    
+   thisRef.getDownloadURL().then(function(imgurl) {
+   // $(document).on("click", "button.uploadimg", previewFile);
+     //$( "#url" ).append(imgurl);
+    document.getElementById("photo").value = imgurl;
+    console.log(imgurl);
+    });
+    
+    $(document).on("click", "button.uploadimg", previewFile); 
+
+
+
 $(document).ready(function() {
+
   // Gets an optional query string from our url (i.e. ?product_id=23)
   var productContainer = $(".product-container");
   var url = window.location.search;
@@ -197,5 +228,8 @@ $(document).ready(function() {
     newProductCard.data("product", product);
     return newProductCard;
   }
-
+ 
+  
 });
+
+}
