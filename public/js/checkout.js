@@ -91,7 +91,7 @@ $(document).ready(function () {
 
     newProductName.text("NAME : " +product.name + " ");
     newProductBody.text("ABOUT : " +product.description);
-    newProductPrice.text("COST : " +product.price);
+    newProductPrice.text("COST : $" +product.price);
     //newProductImg.text("IMAGE : " +product.img);
 
     newProductCardHeading.append(newProductName);

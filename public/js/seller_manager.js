@@ -220,7 +220,7 @@ $(document).ready(function() {
 
     newProductName.text(product.name + " ");
     newProductBody.text(product.description);
-    newProductPrice.text(product.price);
+    newProductPrice.text("$ " +product.price);
    // newProductImg.text(product.img);
     
 
