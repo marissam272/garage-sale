@@ -1,37 +1,34 @@
-var express = require('express');
-// var router = express.Router();
-var passport = require('passport');
-var path = require('path');
-var db = require("../models");
-// app.get('/dashboard',authController.dashboard);
-// router.get('/', function(req, res, next) {
-//    res.send(req.isAuthenticated());
-// });
+// var express = require('express');
+// // var router = express.Router();
+// var passport = require('passport');
+// var path = require('path');
+// var db = require("../models");
+// // app.get('/dashboard',authController.dashboard);
+// // router.get('/', function(req, res, next) {
+// //    res.send(req.isAuthenticated());
+// // });
+var authController = require('../controllers/authcontroller.js');
 
 module.exports = function(app, passport) {
-    console.log(passport);
-    console.log('this is passport!!in routes file!!!!', passport)
-    app.get("/login", function(req,res,next){
-        console.log('we are at the login html')
-       res.sendFile(path.join(__dirname, '../public/login.html'));
-    });
-    
-    app.get("/login/nextPage", function(req,res,next){
-        console.log('we are on the next page successss!!!')
-        res.send('hello from next page it worked!!!!');
-     });
-    
-     app.get("/login/nextPageFail", function(req,res,next){
-        console.log('we are on the next page fail!!!')
-        res.send('we faileedddd');
-     });
-    
+    app.get('/seller_manager',authController.dashboard);
+
+    app.get('/seller_manager', isLoggedIn, authController.dashboard);
+ 
+ 
+ 
+    app.get('/logout', authController.logout);
+
      app.post('/login',
        passport.authenticate('local-signin', {
            successRedirect: '/',
            failureRedirect: '/login'
+           
        })
     );
+    app.get('/signup', authController.signup);
+ 
+
+    app.get('/signin', authController.signin);
 
     app.post('/signup',
         passport.authenticate('local-signup', {
@@ -40,22 +37,15 @@ module.exports = function(app, passport) {
         })
     );
 
-    app.get("/signup/nextPageFail", function(req,res,next){
-        console.log('we are on the next page fail!!!')
-        res.send('we faileedddd');
-     });
-
-    
-    app.get('/signup', function(req,res) {
-        console.log('we hit login test!!');
-        res.sendFile(path.join(__dirname, '../public/signup.html'));
-    });
-
-    app.post("/api/users", function(req,res){
-        db.User.create(req.body).then(function(dbUser){
-            res.json(dbUser)
-        })
-    })
+    function isLoggedIn(req, res, next) {
+ 
+        if (req.isAuthenticated())
+ 
+            return next();
+ 
+        res.redirect('/signin');
+ 
+    }
 }
 
 // module.exports = app;

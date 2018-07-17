@@ -31,8 +31,10 @@ app.use(express.static("public"));
 require("./routes/html-routes.js")(app);
 require("./routes/product-api-routes.js")(app);
 
-// var authRoute = require('./routes/users')(app);
-require('./routes/users')(app, passport);
+var authRoute = require('./routes/users')(app, passport);
+// require('./routes/users')(app, passport);
+
+require('./config/passport/passport.js')(passport, db.User);
 
  db.sequelize.sync().then(function() {
   app.listen(PORT, function() {
