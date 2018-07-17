@@ -6,6 +6,7 @@
     console.log('INSIDE THE PASSPORT!!! THIS IS OUR USER!!!', user);
 
   var User = user;
+  
   var LocalStrategy = require('passport-local').Strategy;
 
   passport.serializeUser(function(user, done) {

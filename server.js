@@ -9,6 +9,7 @@ var bcrypt = require('bcrypt');
 var app = express();
 var PORT = process.env.PORT || 8080;
 
+
 app.use(session({
   secret: 'secret',
   resave: true,
@@ -17,6 +18,7 @@ app.use(session({
 }));
 
 var db = require("./models");
+app.use(session({ secret: 'keyboard cat',resave: true, saveUninitialized:true})); // session secret
 app.use(passport.initialize());
 app.use(passport.session());
 require('./config/passport/passport.js')(passport,db.User);
@@ -31,7 +33,7 @@ app.use(express.static("public"));
 require("./routes/html-routes.js")(app);
 require("./routes/product-api-routes.js")(app);
 
-var authRoute = require('./routes/users')(app, passport);
+var authRoute = require('./routes/users-routes.js')(app, passport);
 // require('./routes/users')(app, passport);
 
 require('./config/passport/passport.js')(passport, db.User);

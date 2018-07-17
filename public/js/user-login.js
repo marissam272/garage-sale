@@ -6,14 +6,16 @@ var signupForm = $("signup-form");
 var sendInput = $("#send-input");
         
 // Adding an event listener for when the form is submitted
-$(sendInput).on("click", function handleFormSubmit(event) {
-event.preventDefault();
-console.log("this is a new user");
-// Wont submit the post if we are missing a body or a title
-if (!userNameInput || !userPassword ){
-  return;
-}
+// $(sendInput).on("click", function handleFormSubmit(event) {
+// event.preventDefault();
+// console.log("loggedin!!!");
+// submituser();
+// function submituser(passport) {
+//   $.post("/api/user/", passport, function() {
+    
+//   });
+// }
 
-});
+// });
 
 });

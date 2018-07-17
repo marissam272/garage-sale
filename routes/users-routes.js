@@ -1,40 +1,30 @@
-// var express = require('express');
-// // var router = express.Router();
-// var passport = require('passport');
-// var path = require('path');
-// var db = require("../models");
-// // app.get('/dashboard',authController.dashboard);
-// // router.get('/', function(req, res, next) {
-// //    res.send(req.isAuthenticated());
-// // });
 var authController = require('../controllers/authcontroller.js');
 
 module.exports = function(app, passport) {
-    app.get('/seller_manager',authController.dashboard);
 
     app.get('/seller_manager', isLoggedIn, authController.dashboard);
- 
- 
  
     app.get('/logout', authController.logout);
 
      app.post('/login',
        passport.authenticate('local-signin', {
            successRedirect: '/',
-           failureRedirect: '/login'
-           
+           failureRedirect: '/login',
+           failureFlash : true // allow flash messages
        })
     );
     app.get('/signup', authController.signup);
  
 
-    app.get('/signin', authController.signin);
+    app.get('/login', authController.signin);
 
     app.post('/signup',
         passport.authenticate('local-signup', {
             successRedirect: '/login',
-            failureRedirect: '/signup/'
+            failureRedirect: '/signup',
+            failureFlash: true
         })
+        
     );
 
     function isLoggedIn(req, res, next) {
@@ -43,11 +33,10 @@ module.exports = function(app, passport) {
  
             return next();
  
-        res.redirect('/signin');
+        res.redirect('/login');
  
     }
 }
 
-// module.exports = app;
 
 
