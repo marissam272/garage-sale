@@ -9,7 +9,7 @@ body {
     font-family: 'Shrikhand', cursive;
 }
 
-footer {
+ footer {
     background-image: url("mekong-green.png");
     border-top: 6px solid darkgray;
     text-align: center;
@@ -19,7 +19,7 @@ footer {
    /* height:60px;  */
 }
 
-/* css for view.html*/
+/* css for view.html */
 
 .cardfordisplay{
     /* background-color: rgb(223, 236, 233); */
@@ -81,3 +81,4 @@ footer {
 .container {
     padding-top: 25px;
 }
+
