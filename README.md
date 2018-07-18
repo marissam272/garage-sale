@@ -12,10 +12,11 @@ MeBay is a peer-to-peer buying/selling application called Me-bay. App will featu
 * New technologies used: Typewriter, multer.
 * Use GET, POST, PUT and DELETE routes for retrieving and adding new data.  
 * MVC folder structure.  
-* Deployed to Heroku with data.  
 
-### For future development  
 
+### For future development 
+
+* Deploy to Heroku with data.  
 * Add user authentication using Passport.js for sellers and buyers.  
 * Add a bidding option.  
 * Add an option to pay online (PayPal, Stripe).  
