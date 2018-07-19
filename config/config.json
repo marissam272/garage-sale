@@ -16,10 +16,10 @@
     "dialect": "mysql"
   },
   "production": {
-    "username": "root",
-    "password": "MyNewPass",
-    "database": "mebay",
-    "host": "127.0.0.1",
+    "username": "t5gyjrk7qyscg1w6",
+    "password": "xtn958qo15ohr05u",
+    "database": "nlq2yf5dy77thyup",
+    "host": "wiad5ra41q8129zn.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
     "port": 3306,
     "dialect": "mysql"
   }
