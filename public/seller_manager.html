@@ -11,6 +11,7 @@
   <link rel="stylesheet" href="css/styles.css" media="screen" title="no title">
   <link href="https://fonts.googleapis.com/css?family=Shrikhand" rel="stylesheet">
   <script src="https://code.jquery.com/jquery.js"></script>
+  <script type='text/javascript' src='js/firebase-config.js'></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
   
 </head>
@@ -130,10 +131,11 @@
         <!-- Footer -->
 
         <script src="https://www.gstatic.com/firebasejs/5.2.0/firebase.js"></script>
-        <script>    
+        <script>   
+        var myKey = config.MY_KEY;
           // Initialize Firebase
           var config = {
-              apiKey: "AIzaSyDDT8K7hsQWz-j34R93v-2TpjR1LrgpoTA",
+              apiKey: myKey,
               authDomain: "mebay-24213.firebaseapp.com",
               databaseURL: "https://mebay-24213.firebaseio.com",
               projectId: "mebay-24213",
@@ -144,6 +146,7 @@
         </script>
 
   <!-- Custom Script -->
+  
   <script src="js/seller_manager.js" type="text/javascript"></script>
   <!-- <script src="js/google-sign-in.js" type="text/javascript"></script> -->
   
