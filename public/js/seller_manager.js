@@ -1,9 +1,3 @@
-
-   
-    
-
-
-
 $(document).ready(function() {
 
 //image saving part ************************************

@@ -2,6 +2,8 @@
 
 MeBay is a peer-to-peer buying/selling application called Me-bay. App will feature customer and buyer pages. Customers' page will show all products in database. Also will have option to search for products in database by category. Sellers' page will allow sellers to upload products.  
 
+You can view the site at: https://glacial-gorge-91952.herokuapp.com/
+
 ### Technologies used  
 
 * HTML, CSS, JS, jQuery, Bootstrap.
@@ -12,6 +14,7 @@ MeBay is a peer-to-peer buying/selling application called Me-bay. App will featu
 * New technologies used: Typewriter, multer.
 * Use GET, POST, PUT and DELETE routes for retrieving and adding new data.  
 * MVC folder structure.  
+* Deployed to Heroku with data.  
 
 
 ### For future development 
