@@ -15,6 +15,7 @@
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.15.2",
+    "dotenv": "^6.0.0",
     "express": "^4.16.3",
     "fs": "0.0.1-security",
     "google-sign-in": "^3.0.3",
@@ -24,6 +25,7 @@
     "nodemon": "^1.18.1",
     "offerup": "^1.1.2",
     "path": "^0.12.7",
+    "request": "^2.87.0",
     "sequelize": "^4.38.0"
   },
   "bugs": {
