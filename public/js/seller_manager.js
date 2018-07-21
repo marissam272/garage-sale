@@ -1,5 +1,5 @@
 $(document).ready(function() {
-
+  
 //image saving part ************************************
 
   //function to save file
