@@ -87,7 +87,7 @@ $(document).ready(function () {
 
     var newProductBody = $("<p>");
     var newProductPrice = $("<p>");
-    var newProductImg = $("<img src =" +product.img + " height='100'width='100' > ");
+    var newProductImg = $("<img src =" +product.img + " height='100'width='200' > ");
 
     newProductName.text("NAME : " +product.name + " ");
     newProductBody.text("ABOUT : " +product.description);

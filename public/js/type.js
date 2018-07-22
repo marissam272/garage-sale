@@ -4,11 +4,11 @@ var typewriter = new Typewriter(app, {
     loop: true
 });
 
-typewriter.typeString('Hello World!')
+typewriter.typeString('Sale Sale Sale!')
     .pauseFor(2500)
     .deleteAll()
-    .typeString('Strings can be removed')
+    .typeString('View Items')
     .pauseFor(2500)
-    .deleteChars(7)
-    .typeString('altered!')
+    .deleteChars(10)
+    .typeString('Sell your Stuff!')
     .start();
