@@ -26,7 +26,7 @@
     "offerup": "^1.1.2",
     "path": "^0.12.7",
     "request": "^2.87.0",
-    "sequelize": "^4.38.0"
+    "sequelize": "^5.15.1"
   },
   "bugs": {
     "url": "https://github.com/marissam272/garage-sale/issues"
